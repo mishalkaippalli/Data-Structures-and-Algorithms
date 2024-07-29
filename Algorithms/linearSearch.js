@@ -9,6 +9,8 @@ function linearSearch(arr, target) {
 // Example usage:
 console.log("linear search: ",linearSearch([1, 2, 3, 4, 5], 3)); 
 
+///time complexity 0(n)
+
 function findMin(arr) {
     if (arr.length === 0) return null;
     let min = arr[0];
@@ -32,7 +34,6 @@ function exists(arr, target) {
 }
 // Example usage:
 console.log("element exists :",exists([1, 2, 3, 4, 5], 3)); 
-
 
 
 
