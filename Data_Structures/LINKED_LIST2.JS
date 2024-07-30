@@ -1,25 +1,61 @@
-//SECOND LARGEST ELEMENT OF AN ARRAY
+class Node {
+    constructor(value){
+        this.value = value
+        this.next = null
+    }
+}
 
-let array = [1,2,3,4]
-let search = 3
-
-function binarySearch(arr, search){
-    let left = 0
-    let right = arr.length
-
-
-    while(left !== right) {
-        let mid = Math.floor(arr.length/2)
-
-        if(arr[mid] === search){
-            return mid
-        } else if(arr[mid] < search){
-            right = mid
-        } else {
-            left = mid
-        }
+class linkedList {
+    constructor() {
+       this.head = null;
+       this.size = 0
     }
 
-}
-console.log(binarySearch(array,search))
+    isEmpty(){
+        return this.size === 0
+    }
 
+    getSize() {
+        return this.size
+    }
+
+    prepend(value){
+        const node = new Node(value)
+        if(this.isEmpty()){
+            this.head = node
+        } else {
+            node.next = this.head
+            this.head = node
+        }
+        this.size++
+    }
+
+    print(){
+        if(this.isEmpty()) {
+            console.log('linked list is empty')
+        } else {
+            let curr = this.head
+            let listValues = ''
+
+            while(curr){
+                listValues += `${curr.value}-->`
+                curr = curr.next
+            }
+            console.log(listValues)
+        }
+    }
+}
+
+let list = new linkedList()
+console.log(list.getSize())
+
+
+list.print()
+
+list.prepend(10)
+list.print()
+console.log('list is empty ?', list.getSize())
+
+list.prepend(20)
+list.prepend(30)
+list.print()
