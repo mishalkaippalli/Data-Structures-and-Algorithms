@@ -20,6 +20,7 @@ function fibonacci(n) {
 }
 // Example usage:
 console.log("fibonnacci: ",fibonacci(6)); 
+
 // Sum of Array Elements
 function sumArray(arr) {
     if (arr.length === 0) {
@@ -29,3 +30,5 @@ function sumArray(arr) {
 }
 // Example usage:
 console.log("Sum array :",sumArray([1, 2, 3, 4, 5])); 
+
+
