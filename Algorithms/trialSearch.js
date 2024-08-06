@@ -1,12 +1,14 @@
-function binarySearch(arr, target){
-    let left = 0
-    let right = arr.length -1
-    while(left !== right){
-        let mid = Math.floor((left+right)/2)
-        if(arr[mid] === target) return mid;
-        if(target < arr[mid] ) right = mid -1;
-        if(target > arr[mid] ) left = mid + 1;
+function bubbleSort(arr) {
+    for(let i = 0; i < arr.length - 1; i++){
+      for(let j= 0; j < arr.length - i; j++){
+        if(arr[j] > arr[j+1]){
+          let temp = arr[j+1]
+          arr[j+1] = arr[j]
+          arr[j] = temp
+        }
+      }
     }
-  return -1
+    return arr
 }
-console.log(binarySearch([1,2,3,4,5], 4))
+
+console.log(bubbleSort([1,3,4,2,5,-4,-6]))

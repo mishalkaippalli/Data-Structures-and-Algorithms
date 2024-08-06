@@ -106,6 +106,8 @@ class linkedList {
     }
   }
 
+  
+
 
   print() {
     if(this.isEmpty()) {
