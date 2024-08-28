@@ -102,3 +102,5 @@ console.log(queue.size())
 queue.print()
 
 console.log(queue.peek())
+
+// here both enqueue and dequeu has constant time complexity
