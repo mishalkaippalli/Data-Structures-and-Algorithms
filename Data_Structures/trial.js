@@ -1,60 +1,62 @@
-class Node {
-      constructor(value){
-        this.value =  value
-        this.left = value
-        this.right = null
-      }
+class Minheap{
+   constructor(){
+    this.heap = []
+   }
+
+   push(value){
+     this.heap.push(value)
+     const n = this.heap.length
+     let curr = n - 1
+
+     while(curr > 0 ){
+        let parent = ((curr - 1)/2)
+        if(this.heap[curr] < this.heap[parent]){
+            [this.heap[curr], this.heap[parent]] = [this.heap[parent], this.heap[curr]]
+            curr = parent
+        } else {
+            break
+        }      
+     }
+   }
+
+   pop(){
+       const n = this.heap.length;
+
+       [this.heap[0], this.heap[n-1]] = [this.heap[n-1], this.heap[0]]
+
+       let returnvalue = this.heap.pop()
+
+       let curr = 0
+
+       while(curr*2+1 < n){
+        let leftIndex = curr*2 + 1
+        let rightIndex = curr*2 + 2
+        let minChildIndex = (rightIndex < n && this.heap[rightIndex] < this.heap[leftIndex]) ? rightIndex : leftIndex;
+         if(this.heap[minChildIndex] < this.heap[curr]){
+            [this.heap[minChildIndex], this.heap[curr]] = [this.heap[curr], this.heap[minChildIndex]]
+            curr = minChildIndex
+         } else {
+            break
+         }
+       }
+       return returnvalue
+   }
 }
 
-class BinarySearchTree{
-    constructor(){
-        this.root = null
-    }
-    
-    isEmpty() {
-        return this.root === null;
-    }
+const heap = new Minheap()
 
-    insert(value){
-        const newNode = new Node(value)
-        if(this.isEmpty()){
-            this.root = newNode
-        } else {
-            this.insertNode(this.root, newNode)
-        }
-    }
+heap.push(5)
+heap.push(10)
+heap.push(15)
+heap.push(12)
+heap.push(14)
 
-    insertNode(root, newNode) {
-           
-        if(newNode.value < root.value){
-            if(root.left === null){
-                root.left = newNode
-            } else {
-                this.insertNode(root.left, newNode)
-            }
-        } else {
-            if(root.right === null){
-                root.right = newNode
-            } else {
-                this.insertNode(root.right, newNode)
-            }
-        }
-    }
+console.log(heap)
 
-    search(root, value){
-        if(!root){
-            return false;
-        } else {
-            if(root.value === value) {
-                return true
-            } else if(value < root.value) {
-              return this.search(root.left, value)
-        } else {
-            return this.search(root.right, value)
-        }
-    }
-}
-}
+heap.push(7)
 
-const bst = new BinarySearchTree()
-console.log('Tree is empty', bst.isEmpty())
+console.log(heap)
+
+heap.pop()
+console.log("after popping",heap)
+  
